@@ -2,13 +2,15 @@ from django.shortcuts import render
 from django.http.response import HttpResponseNotFound
 from transformers import TextGenerationPipeline, GPT2LMHeadModel, AutoTokenizer
 from translate import Translator
+from dotenv import dotenv_values
 
 # Create your views here.
 def index(request):
     return render(request, "core/index.html")
 
 def generar_historia(genre):
-    model_name = "aspis/gpt2-genre-story-generation"
+    model_name = dotenv_values(".env")["NAME"]
+
     model = GPT2LMHeadModel.from_pretrained(model_name)
     tokenizer = AutoTokenizer.from_pretrained(model_name)
     generator = TextGenerationPipeline(model=model, tokenizer=tokenizer)
