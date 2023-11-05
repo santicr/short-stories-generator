@@ -1,0 +1,33 @@
+{% extends "core/base.html" %}
+
+{% block title %}
+Generador de historias cortas
+{% endblock %}
+
+{% block body %}
+<center>
+    <h1>Bienvenido al generador de historias cortas basadas en IA</h1>
+    <div class="container">
+        <div class="row">
+            <center>
+                <div class="col-6">
+                    <form method="POST" action="{% url 'generate_story' %}">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="genre" class="form-label">Escribe el género</label>
+                            <input type="text" class="form-control" name="genre" id="genre" placeholder="Escribe aquí el género">
+                            <label for="genre" class="form-label">Los géneros disponibles son romance, aventura, misterio, fantasia, comedia, paranormal, ciencia-ficcion</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Generar historia corta</button>
+                    </form>
+                </div>
+            </center>
+        </div>
+        <div class="row">
+            <center>
+                <p> {{ historia }} </p>
+            </center>
+        </div>
+    </div>
+</center>
+{% endblock %}
