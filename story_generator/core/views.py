@@ -9,7 +9,7 @@ def index(request):
     return render(request, "core/index.html")
 
 def generar_historia(genre):
-    model_name = aspis/gpt2-genre-story-generation
+    model_name = "aspis/gpt2-genre-story-generation"
 
     model = GPT2LMHeadModel.from_pretrained(model_name)
     tokenizer = AutoTokenizer.from_pretrained(model_name)
