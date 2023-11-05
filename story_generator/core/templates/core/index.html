@@ -15,7 +15,7 @@ Generador de historias cortas
                         {% csrf_token %}
                         <div class="mb-3">
                             <label for="genre" class="form-label">Escribe el género de la historia corta que deseas generar</label>
-                            <input type="text" class="form-control" name="genre" id="genre" placeholder="Escribe aquí el género">
+                            <input type="text" class="form-control" name="genre" id="genre" placeholder="Escribe aquí el género" required>
                             <label for="genre" class="form-label">Los géneros disponibles son romance, aventura, misterio, fantasia, comedia, paranormal, ciencia-ficcion</label>
                         </div>
                         <button type="submit" class="btn btn-primary">Generar historia corta</button>

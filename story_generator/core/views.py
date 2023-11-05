@@ -1,6 +1,6 @@
-from django.shortcuts import render, redirect
-from transformers import pipeline, TextGenerationPipeline, GPT2LMHeadModel, AutoTokenizer
-from dotenv import dotenv_values
+from django.shortcuts import render
+from django.http.response import HttpResponseNotFound
+from transformers import TextGenerationPipeline, GPT2LMHeadModel, AutoTokenizer
 from translate import Translator
 
 # Create your views here.
@@ -56,6 +56,9 @@ def generate_story(request):
 
         data = request.POST
         genre = data["genre"]
+
+        if genre not in mapa:
+            return HttpResponseNotFound("Por favor digita bien el género")
 
         historia = generar_historia(mapa[genre])
         historia = historia[0]["generated_text"]
