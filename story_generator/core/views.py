@@ -58,12 +58,12 @@ def generate_story(request):
         genre = data["genre"]
 
         if genre not in mapa:
-            return HttpResponseNotFound("Por favor digita bien el género")
+            return HttpResponseNotFound("Por favor digita bien el género, dirigete al index nuevamente")
 
         historia = generar_historia(mapa[genre])
         historia = historia[0]["generated_text"]
         historia = arreglar_historia(historia)
         historia = traducir_texto(historia)
         
-        
+
     return render(request, "core/index.html", context={"historia": historia})
