@@ -2,7 +2,6 @@ from django.shortcuts import render
 from django.http.response import HttpResponseNotFound
 from transformers import TextGenerationPipeline, GPT2LMHeadModel, AutoTokenizer
 from translate import Translator
-from dotenv import dotenv_values
 
 # Renderización del template index
 def index(request):
